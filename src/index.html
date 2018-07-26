@@ -1,0 +1,40 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css" />
+</head>
+
+<body>
+
+  <div id="app">
+    {{ message }}
+  </div>
+
+  <div id="spline"></div>
+
+  <script src="index.js"></script>
+</body>
+
+<script>
+  eon.chart({
+    //channels: ['dropped-box-az'],
+    channels: ['pubnub-eon-iot'],
+    history: false,
+    flow: true,
+    pubnub: pubnub,
+    generate: { // c3 chart object
+      bindto: '#spline',
+      data: {
+        labels: false
+      }
+    },
+    xType: 'custom',
+    xId: 'x',
+    limit: 100
+  });
+</script>
+
+</html>
